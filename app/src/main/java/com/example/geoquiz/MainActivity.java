@@ -12,8 +12,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends SingleFragmentActivity {
 
     private Button mTrueButton;
     private Button mFalseButton;
@@ -143,12 +144,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mFalseButton.setOnClickListener(new View.OnClickListener() {
+        mFalseButton.setOnClickListener(new View.OnClickListener() { //TODO finish this pls
             @Override
-            public void onClick(View v) {
-                checkAnswer(false);
+            public void onClick(View view) {
+
             }
         });
+//        mFalseButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                checkAnswer(false);
+//            }
+//        });
 
         mResetButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -173,6 +180,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         updateQuestion();
+    }
+
+    @Override
+    public Fragment createFragment() {
+        return new CheatFragment();
     }
 
     @Override
